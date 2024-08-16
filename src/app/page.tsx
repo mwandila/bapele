@@ -1,113 +1,239 @@
+
+"use client";
+
+import React, { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
+import LoanApplicationForm from "@/components/landingpage/loan";
+import moneyboy from "../../public/images/moneyboy1.jpg";
 
-export default function Home() {
+const HomePage = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="min-h-screen flex flex-col">
+      <header className="bg-blue-600 bg-opacity-80 text-white py-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <Link href="/">
+            <span className="text-2xl font-bold">Bapele</span>
+          </Link>
+          <nav>
+            <ul className="flex space-x-4">
+              <li>
+                <Link href="#how-it-works">
+                  <span className="hover:text-gray-200">How It Works</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/about">
+                  <span className="hover:text-gray-200">About</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/services">
+                  <span className="hover:text-gray-200">Services</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact">
+                  <span className="hover:text-gray-200">Contact</span>
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          <div className="flex space-x-4">
+            <Link href="/become-a-lender">
+              <span className=" text-white-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-600 transition duration-300">
+                Become a Lender
+              </span>
+            </Link>
+            <button
+              className="text-white-600 px-6 py-3 rounded-full font-semibold hover:bg-pink-900 transition duration-300 relative"
+              onClick={() => setShowModal(true)}
+            >
+              Become a Borrower
+              <svg
+                className="absolute right-2 top-2"
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M5 6L0 0H10L5 6Z" fill="#1A1D23" />
+              </svg>
+            </button>
+            {showModal && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                <div className="bg-white shadow-lg p-4 w-48 relative">
+                  <ul className="text-gray-900">
+                    <li>
+                      <Link href="/borrower/schema-loan">
+                        <span className="block py-2 hover:bg-gray-100">
+                          Schema Loan
+                        </span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/borrower/business-loan">
+                        <span className="block py-2 hover:bg-gray-100">
+                          Business Loan
+                        </span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/borrower/civil-servant-loan">
+                        <span className="block py-2 hover:bg-gray-100">
+                          Civil Servant Loan
+                        </span>
+                      </Link>
+                    </li>
+                  </ul>
+                  <button
+                    className="absolute top-2 right-2"
+                    onClick={() => setShowModal(false)}
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M10 10L15 15M10 10L5 15"
+                        stroke="#1A1D23"
+                        strokeWidth="2"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            )}
+            <Link href="/invest">
+              <span className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">
+                Invest
+              </span>
+            </Link>
+          </div>
         </div>
-      </div>
+      </header>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <main className="flex-grow">
+        <section className="relative bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={moneyboy}
+              alt="Financial background"
+              layout="fill"
+              objectFit="cover"
+              className="opacity-20"
+            />
+          </div>
+          <div className="container mx-auto flex justify-between items-center relative z-10">
+            <div className="w-1/2">
+              <h1 className="text-4xl font-bold mb-4">
+                Smart Financial Solutions
+              </h1>
+              <p className="text-lg mb-8">
+                Whether you're looking to borrow, lend, or invest, we provide
+                tailored financial services to meet your goals.
+              </p>
+              <Link href="#how-it-works">
+                <span className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">
+                  Learn More
+                </span>
+              </Link>
+            </div>
+            <div className="w-1/2">
+              <div className="bg-white text-black p-6 rounded-lg shadow-lg">
+                <LoanApplicationForm />
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+        <section id="how-it-works" className="py-20 bg-gray-100">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold mb-8 text-center">How It Works</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-white rounded-md shadow-md p-6">
+                <h3 className="text-xl font-bold mb-4">1. Choose Your Path</h3>
+                <p className="text-gray-700 mb-4">
+                  Decide whether you want to borrow, lend, or invest. Our
+                  platform caters to all financial needs.
+                </p>
+              </div>
+              <div className="bg-white rounded-md shadow-md p-6">
+                <h3 className="text-xl font-bold mb-4">2. Complete Your Profile</h3>
+                <p className="text-gray-700 mb-4">
+                  Provide necessary information and verify your identity to
+                  ensure a secure and personalized experience.
+                </p>
+              </div>
+              <div className="bg-white rounded-md shadow-md p-6">
+                <h3 className="text-xl font-bold mb-4">3. Get Matched</h3>
+                <p className="text-gray-700 mb-4">
+                  Our algorithm matches borrowers with lenders or investors
+                  based on your criteria and risk profile.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+        <section className="py-20 bg-white">
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold mb-8 text-center">Our Services</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-gray-100 rounded-md shadow-md p-6">
+                <h3 className="text-xl font-bold mb-4">Borrowing</h3>
+                <p className="text-gray-700 mb-4">
+                  Access competitive rates for personal, business, or mortgage
+                  loans tailored to your needs.
+                </p>
+                <Link href="/borrowing">
+                  <span className="text-blue-600 hover:text-blue-700">
+                    Learn More
+                  </span>
+                </Link>
+              </div>
+              <div className="bg-gray-100 rounded-md shadow-md p-6">
+                <h3 className="text-xl font-bold mb-4">Lending</h3>
+                <p className="text-gray-700 mb-4">
+                  Put your capital to work by lending to verified borrowers and
+                  earn attractive returns.
+                </p>
+                <Link href="/lending">
+                  <span className="text-blue-600 hover:text-blue-700">
+                    Learn More
+                  </span>
+                </Link>
+              </div>
+              <div className="bg-gray-100 rounded-md shadow-md p-6">
+                <h3 className="text-xl font-bold mb-4">Investing</h3>
+                <p className="text-gray-700 mb-4">
+                  Diversify your portfolio with our range of investment options,
+                  from peer-to-peer lending to managed funds.
+                </p>
+                <Link href="/investing">
+                  <span className="text-blue-600 hover:text-blue-700">
+                    Learn More
+                  </span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      <footer className="bg-gray-800 text-white py-8">
+        <div className="container mx-auto text-center">
+          <p>&copy; 2024 MoneyWise. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
   );
-}
+};
+
+export default HomePage;
