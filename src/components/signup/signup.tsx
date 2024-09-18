@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import ok from "../../../public/images/14273.jpg"
 
 const SignUpComponent = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -35,13 +36,13 @@ const SignUpComponent = () => {
     <div className="flex flex-row justify-center items-center h-screen">
       <div className="w-1/2">
         <Image
-          src="/images/signup-image.jpg"
+          src={ok}
           alt="Sign up image"
           width={400}
           height={400}
         />
       </div>
-      <div className="w-1/2 bg-white p-8 rounded-lg shadow-lg">
+      <div className="w-1/2 bg-white p-8 rounded-lg ">
         <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
         <form>
           <div className="mb-4">

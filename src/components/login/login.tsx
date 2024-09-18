@@ -24,15 +24,15 @@ const LoginComponent = () => {
         <Image
           src="/images/login-image.jpg"
           alt="Login image"
-          width={400}
-          height={400}
+          width={300}
+          height={200}
         />
       </div>
-      <div className="w-1/2 bg-white p-8 rounded-lg shadow-lg">
+      <div className="w-1/2 bg-yellow-700 p-8  ">
         <h2 className="text-2xl font-bold mb-4">Login</h2>
         <form>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phoneNumber">
+            <label className="block text-gray-900 text-sm font-bold mb-2" htmlFor="phoneNumber">
               Phone Number
             </label>
             <input
