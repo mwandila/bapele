@@ -1,0 +1,3 @@
+[[redirets]] from ='/i*' 
+to ='/index.html'
+static=200
