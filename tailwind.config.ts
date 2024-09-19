@@ -8,11 +8,6 @@ const config = {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
 	],
-  
-purge: [
-  "./src/components/**/*.{js,jsx}",
-  "./public/index.html",
-],
   prefix: "",
   theme: {
     container: {
